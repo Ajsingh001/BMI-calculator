@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        ::before,
+        ::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -1;
+            background-image: url(/img/bmi\ index.jpg);
+            background-repeat: no-repeat;
+            background-origin: border-box;
+            background-position: center;
+            background-size: cover;
+        }
+
+
+        body {
+            margin: auto;
+            padding: 0%;
+            background-color: #000;
+            color: #000;
+            max-width: 1200px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main {
+
+            padding-bottom: 15px;
+            padding-top: 10px;
+            border: 4px solid #fff;
+            width: 1200px;
+            background-color: rgba(25, 22, 24, 0.8);
+            overflow-y: hidden;
+            /* opacity: 0.9; */
+            /* background: transparent; */
+
+
+
+        }
+
+        .newone {
+            /* opacity: 100%; */
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 250px;
+            /* text-align: center; */
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        table {
+
+            border: 2px solid black;
+            width: auto;
+            table-layout: auto;
+            border-collapse: collapse;
+            overflow: hidden;
+            font-size: 20px;
+            font-weight: 700;
+            caption-side: top;
+
+
+        }
+
+        caption {
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #fff;
+        }
+
+        tr,
+        th {
+            border: 2px solid black;
+            overflow: hidden;
+            padding: 10px;
+            font-weight: 900;
+        }
+
+        input {
+            padding: 5px;
+            text-align: center;
+            font-size: 18px;
+
+        }
+
+        .reset {
+            padding: 2px;
+            width: 130px;
+            /* border: none; */
+            font-size: 20px;
+            font-weight: 900;
+            border-radius: 5px;
+            box-shadow: 3px 3px 2px 1px black;
+            color: rgb(0, 16, 16);
+            background-color: rgba(9, 120, 205, 0.453);
+            transition: 0.2s linear;
+            animation: z 0.1s;
+        }
+
+        @keyframes z {
+            0% {
+                transform: scale(1, 1);
+            }
+
+            100% {
+                transform: scale(1.1, 1.1);
+            }
+
+        }
+
+        .reset:hover {
+            background-color: orangered;
+        }
+
+        .reset:active {
+            background-color: red;
+        }
+
+        #cal {
+            padding: 5px;
+            font-size: 18px;
+            font-weight: 900;
+            border-radius: 10px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0px 0px 3px 4px #000;
+        }
+
+
+        #cal:hover {
+            background-color: orangered;
+            color: #fff;
+            transition: 0.2s linear;
+            box-shadow: #4f46e5;
+            animation: calz 0.1s;
+        }
+
+        @keyframes calz {
+            0% {
+                transform: scale(1, 1);
+            }
+
+            100% {
+                transform: scale(1.1, 1.1);
+            }
+
+        }
+
+
+
+        #cal:active {
+            background-color: red;
+            color: #fff;
+        }
+
+        #r1 {
+            margin-right: 2px;
+
+        }
+
+        input[type=number] {
+            margin: auto;
+            color: #000;
+            font-weight: 500;
+            border: 2px solid black;
+            list-style: none;
+            appearance: none;
+            background-color: #93c5fd;
+
+        }
+
+        input[type=number]::placeholder {
+            color: #000;
+            font-weight: 700;
+            opacity: 0.7;
+
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0%;
+        }
+
+        input[type=number]:hover {
+            background-color: grey;
+            color: #fff;
+        }
+
+        .result {
+            padding: 5px;
+            border: 2px solid #fff;
+            color: #fff;
+            width: 400px;
+            height: 208px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .divresult {
+            margin: 5px;
+            background-color: #3b82f6;
+            border: 5px solid #000;
+            color: #fff;
+            font-weight: 800;
+            width: auto;
+            font-size: 22px;
+            padding: 5px;
+        }
+
+        .category {
+            background-color: rgb(248, 252, 252);
+            color: #000;
+            font-weight: 800;
+            border: 5px solid #000;
+            width: auto;
+            font-size: 22px;
+            text-transform: capitalize;
+            padding: 5px;
+            margin: 5px;
+            overflow: hidden;
+            /* height: 60px; */
+        }
+
+        .weightcat {
+            background-color: rgb(248, 252, 252);
+            color: #000;
+            font-weight: 800;
+            border: 5px solid #000;
+            width: auto;
+            font-size: 22px;
+            text-transform: capitalize;
+            padding: 5px;
+            margin: 5px;
+            overflow: hidden;
+            /* height: 60px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>BMI calculator</h1>
+        <div class="newone">
+
+            <table>
+                <form action="">
+                    <colgroup>
+                        <col span="3" style="background-color:#a5b4fc;">
+                    </colgroup>
+                    <tr>
+                        <th for="age"><label for="age">AGE</label></th>
+                        <th>
+                            <input type="number" placeholder="AGES bettwen 2 to 120" minlength="1" maxlength="4"
+                                size="3" id="age" required>
+                        </th>
+                        <th>Ages 2 to 120</th>
+
+                    </tr>
+                    <tr>
+
+                        <th>GENDER</th>
+                        <th> <input type="radio" name="gender" value="male" id="r1"><span>MALE</span></th>
+                        <th><input type="radio" name="gender" value="female" id="r1"><span>FEMALE</span></th>
+                    </tr>
+                    <tr>
+                        <th><label for="height">height</label></th>
+                        <th><input type="number" placeholder="in centimeter" id="height">
+                        </th>
+                        <th><input type="reset" class="reset" value="Reset" name="reset"></input></th>
+                    </tr>
+                    <tr>
+                        <th><label for="weight">Weight</label></th>
+                        <th>
+                            <input type="number" placeholder="in kg" name="Weight" id="weight">
+                        </th>
+
+                        <th>
+                            <!-- <div id="btncal"><input type="button" id="cal" placeholder="CALCULATOR"></input></div> -->
+                            <div id="btncal"><button type="button" id="cal">CALCULATE</button></div>
+                        </th>
+                    </tr>
+            </table>
+            </form>
+            <div class="result">
+                <h1>RESULT of BMI INDEX</h1>
+                <div class="divresult">Result</div>
+                <div class="category">category</div>
+                <div class="weightcat">weightcat</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    "use strict"
+    const x = document.body.querySelector("#cal").addEventListener("click", () => {
+
+
+        const y = document.body.querySelector('input[name="gender"]:checked').value
+
+        // console.log(y)
+        // const cat = document.body.querySelectorAll("#mof").forEach((e) => {
+        //     const gc = e.textContent = y.value
+        //     console.log(gc)
+        // })
+        const height = document.body.querySelector("#height").value
+        const heightinmeter = height / 100
+        const agex = document.body.querySelector("#age").value
+        if (agex > 120 || agex < 2) {
+            const y = document.body.querySelector(".divresult")
+            y.textContent = "sorry no eligable"
+            const y1 = document.body.querySelector(".category")
+            y1.textContent = "NO CATEGORY"
+
+        }
+        else if (agex <= 120 && agex >= 2 || y == "male" || y == "female") {
+            const weight = document.body.querySelector("#weight").value
+            const height = document.body.querySelector("#weight").value
+
+            const BMI = weight / (heightinmeter * heightinmeter)
+            console.log(BMI)
+            const bmiresult = document.body.querySelector(".divresult")
+            const finaloutput = bmiresult.textContent = `${Math.floor(BMI * 100) / 100}/m2`
+            const ffinal = parseFloat(finaloutput)
+            console.log(ffinal)
+
+            const h = document.body.querySelector(".category")
+
+            if (y === "female") {
+                const ui = h.textContent = y
+                h.style.background = "#be185d"
+                h.style.color = "white"
+
+            }
+            else {
+                h.textContent = y
+                h.style.background = "orangered"
+                h.style.color = "white"
+
+            }
+
+            if (ffinal < 16.00) {
+                const weightcat = document.body.querySelector(".weightcat")
+                weightcat.textContent = "Severe Thinness"
+                weightcat.style.background = "rgb(235, 215, 33)"
+
+            }
+            else if (ffinal > 16.00 && ffinal < 17.00) {
+                const weightcat = document.body.querySelector(".weightcat")
+                weightcat.textContent = "Moderate Thinness"
+                weightcat.style.background = "rgb(178, 235, 33)"
+
+            }
+            else if (ffinal > 17.00 && ffinal < 18.50) {
+                const weightcat = document.body.querySelector(".weightcat")
+                weightcat.textContent = "Mild Thinness"
+                weightcat.style.background = "rgb(185, 235, 33)"
+
+            }
+            else if (ffinal > 25.00 && ffinal < 30.00) {
+                const weightcat = document.body.querySelector(".weightcat")
+                weightcat.textContent = "overweight"
+                weightcat.style.background = "rgb(235, 100, 33)"
+
+            }
+            else if (ffinal > 30.01 && ffinal < 35.00) {
+                const weightcat = document.body.querySelector(".weightcat")
+                weightcat.textContent = "Obese Class I"
+                weightcat.style.background = "rgb(235, 33, 46)"
+
+            }
+            else if (ffinal => 18.50 && ffinal < 25.00) {
+                const weightcat = document.body.querySelector(".weightcat")
+                weightcat.textContent = "Normal";
+                weightcat.style.background = "rgb(78, 252, 3)"
+
+
+
+            }
+
+        }
+
+
+    })
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
